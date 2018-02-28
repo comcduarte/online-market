@@ -2,6 +2,7 @@
 namespace Market;
 
 use Zend\Router\Http\Literal;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -21,6 +22,14 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+        ],
+    ],
+    'controller_plugins' => [
+        'aliases' => [
+            'somePlugin' => Controller\Plugin\SomePlugin::class,
+        ],
+        'factories' => [
+            Controller\Plugin\SomePlugin::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

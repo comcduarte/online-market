@@ -8,7 +8,20 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $userLoggedin = true;
+        
+        if (!$userLoggedin) {
+            //return $this->redirect()->toRoute('home');
+        }
+        
+        /*
+         * Lab: Using a Custom Controller Plugin
+         */
+        $pluginResult = $this->somePlugin()->getSomething();
+        
+        return new ViewModel([
+            'pluginResult' => $pluginResult,
+        ]);
     }
 }
 ?>
