@@ -65,6 +65,10 @@ return [
         ],
     ],
     'view_manager' => [
+        'template_map' => [
+            'market/index/index' => __DIR__ . '/../view/market/index/index.phtml',
+            'market/index/default' => __DIR__ . '/../view/market/index/default.phtml',
+        ],
         'template_path_stack' => [
             __DIR__ . '/../view',
         ],

@@ -21,10 +21,16 @@ class IndexController extends AbstractActionController
          */
         $pluginResult = $this->somePlugin()->getSomething();
         
-        return new ViewModel([
+        /*
+         * Lab: Change Default Template
+         */
+        $viewModel = new ViewModel([
             'pluginResult' => $pluginResult,
             'categories' => $this->categories,
         ]);
+        //$viewModel->setTemplate('market/index/default');
+        
+        return $viewModel;
     }
     
     public function setCategories(array $categories)
