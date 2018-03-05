@@ -6,6 +6,8 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    public $categories;
+    
     public function indexAction()
     {
         $userLoggedin = true;
@@ -21,7 +23,13 @@ class IndexController extends AbstractActionController
         
         return new ViewModel([
             'pluginResult' => $pluginResult,
+            'categories' => $this->categories,
         ]);
+    }
+    
+    public function setCategories(array $categories)
+    {
+        $this->categories = $categories;
     }
 }
 ?>
