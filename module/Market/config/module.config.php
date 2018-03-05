@@ -35,6 +35,16 @@ return [
                             ],
                         ],
                     ],
+                    'view' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/view[/]',
+                            'defaults' => [
+                                'controller' => Controller\ViewController::class,
+                                'action' => 'index',
+                            ],
+                        ],
+                    ],
                 ],
             ],
         ],
@@ -43,6 +53,7 @@ return [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
             Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
+            Controller\ViewController::class => Controller\Factory\ViewControllerFactory::class,
         ],
     ],
     'controller_plugins' => [
