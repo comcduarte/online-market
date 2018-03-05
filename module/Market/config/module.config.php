@@ -3,6 +3,7 @@ namespace Market;
 
 use Zend\Router\Http\Literal;
 use Zend\ServiceManager\Factory\InvokableFactory;
+use Zend\Router\Http\Segment;
 
 return [
     'router' => [
@@ -16,12 +17,32 @@ return [
                         'action' => 'index',
                     ],
                 ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'index' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/main[/:action]',
+                        ],
+                    ],
+                    'post' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/post',
+                            'defaults' => [
+                                'controller' => Controller\PostController::class,
+                                'action' => 'index',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+            Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
         ],
     ],
     'controller_plugins' => [
